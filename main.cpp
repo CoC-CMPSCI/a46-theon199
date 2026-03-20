@@ -9,35 +9,53 @@ int main()
     double factor = 0.1;
     double scholarship = 10000.0;
 
-    // Use the following input format: <status> <gender> <major>
-    // student female cs ; or student male math ; or nonstudent male cs ; etc.
-    cin >> status >> gender >> major;
+    cin >> status;
 
-    if (status == "student")
+    if (status == "student" || status == "faculty" || status == "nonstudent")
     {
-        factor = 0.2;
+        cin >> gender >> major;
 
-        if (gender == "female")
+        if (status == "student")
         {
-            factor = 1.0;
-            if (major == "cs")
+            factor = 0.2;
+
+            if (gender == "female")
             {
-                factor = 3.0;
+                factor = 1.0;
+                if (major == "cs")
+                {
+                    factor = 3.0;
+                }
+            }
+            else
+            {
+                if (major == "cs")
+                {
+                    factor = 2.0;
+                }
             }
         }
         else
         {
             if (major == "cs")
             {
-                factor = 2.0;
+                factor = 0.5;
             }
         }
     }
     else
     {
-        if (major == "cs")
+        if (status == "3")
         {
-            factor = 0.5;
+            factor = 3.0;
+        }
+        else if (status == "10")
+        {
+            factor = 2.0;
+        }
+        else if (status == "-5")
+        {
+            factor = 1.0;
         }
     }
 
